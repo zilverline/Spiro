@@ -7,3 +7,5 @@ Installing
 ==========
 
 Download and extract the zip file from the Release folder. Double click the .saver file and it will be installed in your System Preferences.
+
+![Spiro](https://github.com/zilverline/Spiro/blob/master/Release/screenshot.png)
