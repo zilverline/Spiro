@@ -29,10 +29,9 @@
         self.defaults = [ScreenSaverDefaults defaultsForModuleWithName:[NSBundle bundleForClass:[self class]].bundleIdentifier];
         
         [self.defaults registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
-                                    NO, @"singleColor",
-                                    20.0, @"speed",
-                                    1.0, @"smoothness",
-                                    [NSColor redColor], @"color",
+                                    @"NO", @"singleColor",
+                                    @"20.0", @"speed",
+                                    @"1.0", @"smoothness",
                                     nil]];
         
         [self setAnimationTimeInterval:1/30.0];
@@ -74,7 +73,7 @@
     self.tInc = [self.defaults floatForKey:@"smoothness"] / 100; // smoothnes (lower is smoother)
     self.s = [self.defaults floatForKey:@"speed"]; // speed (lower is slower, 1 is slowest)
     
-    if ([self.defaults boolForKey:@"singleColor"]) {
+    if ([self.defaults boolForKey:@"singleColor"] && [self.defaults valueForKey:@"color"] != nil) {
         self.color = [NSUnarchiver unarchiveObjectWithData:[self.defaults dataForKey:@"color"]];
     } else {
         double red = SSRandomFloatBetween( 0.0, 1.0 );

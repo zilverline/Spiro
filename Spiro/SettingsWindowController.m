@@ -50,8 +50,11 @@
     [self.smoothness setFloatValue:[defaults floatForKey:@"smoothness"]];
     [self.singleColor setState:[defaults boolForKey:@"singleColor"]];
     [self.color setEnabled:[defaults boolForKey:@"singleColor"]];
-    [self.color setColor:[NSUnarchiver unarchiveObjectWithData:[defaults dataForKey:@"color"]]];
-
+    if ([defaults valueForKey:@"color"] == nil) {
+        [self.color setColor:[NSColor redColor]];
+    } else {
+        [self.color setColor:[NSUnarchiver unarchiveObjectWithData:[defaults dataForKey:@"color"]]];
+    }
 }
 
 @end
